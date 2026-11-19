@@ -2,7 +2,6 @@ import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
 import {fileURLToPath} from 'url';
-import {createServer as createViteServer} from 'vite';
 import {GoogleGenAI, ThinkingLevel, Type, type Content, type Part} from '@google/genai';
 
 dotenv.config(
@@ -395,6 +394,7 @@ async function startServer() {
   });
 
   if (process.env.NODE_ENV !== 'production') {
+    const {createServer: createViteServer} = await import('vite');
     const vite = await createViteServer({
       server: {middlewareMode: true},
       appType: 'spa',

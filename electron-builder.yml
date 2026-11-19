@@ -1,6 +1,12 @@
 appId: com.flowr.desktop
 productName: Flowr
 asar: false
+forceCodeSigning: false
+extraMetadata:
+  name: flowr
+  version: 1.0.0
+  description: Flowr AI Conversational Workspace
+  author: Flowr
 directories:
   output: release
 files:
@@ -9,9 +15,8 @@ files:
   - public/**/*
   - server.mjs
   - package.json
-  - "!electron/icon.png"
 win:
-  icon: electron/icon.ico
+  icon: public/assets/aistudio/a88fd0eb-38f8-44c1-9e03-66d496fdc0ca_624e8b59.png
   target:
     - target: portable
       arch:
