@@ -2,6 +2,7 @@ appId: com.flowr.desktop
 productName: Flowr
 asar: false
 forceCodeSigning: false
+publish: null
 extraMetadata:
   name: flowr
   version: 1.0.0
