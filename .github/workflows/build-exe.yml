@@ -19,7 +19,7 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build Flowr web bundle
         run: npm run build
@@ -28,7 +28,7 @@ jobs:
         run: npx esbuild server.ts --bundle --platform=node --format=esm --packages=external --outfile=server.mjs
 
       - name: Install Electron packager tools
-        run: npm install --save-dev electron electron-builder
+        run: npm install --save-dev --legacy-peer-deps electron electron-builder
 
       - name: Package Flowr Windows .exe
         env:
