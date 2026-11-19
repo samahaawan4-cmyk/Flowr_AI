@@ -1,0 +1,45 @@
+name: Build Flowr Windows EXE
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Flowr web bundle
+        run: npm run build
+
+      - name: Bundle production server
+        run: npx esbuild server.ts --bundle --platform=node --format=esm --packages=external --outfile=server.mjs
+
+      - name: Install Electron packager tools
+        run: npm install --no-save electron electron-builder png-to-ico
+
+      - name: Convert Flowr logo to Windows .ico
+        run: node -e "const fs=require('fs');const pngToIco=require('png-to-ico');const fn=pngToIco.default||pngToIco;fn('public/assets/aistudio/a88fd0eb-38f8-44c1-9e03-66d496fdc0ca_624e8b59.png').then(buf=>fs.writeFileSync('electron/icon.ico',buf));"
+
+      - name: Package Flowr Windows .exe
+        run: npx electron-builder --config electron-builder.yml --win
+
+      - name: Upload Flowr EXE artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Flowr-Windows-EXE
+          path: |
+            release/Flowr-Portable.exe
+            release/Flowr-Setup.exe

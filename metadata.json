@@ -1,0 +1,6 @@
+{
+  "name": "Lumen Chat",
+  "description": "An AI-powered conversational workspace with streaming responses, multimodal file and image understanding, custom personas, and adjustable reasoning depth.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

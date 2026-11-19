@@ -1,0 +1,207 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Custom subtle scrollbars for chat history and code blocks */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(113, 113, 122, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(113, 113, 122, 0.45);
+}
+
+@keyframes flowr-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flowr-message-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flowr-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes flowr-aurora-one {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(4%, -5%, 0) scale(1.06);
+  }
+  66% {
+    transform: translate3d(-4%, 4%, 0) scale(0.96);
+  }
+}
+
+@keyframes flowr-aurora-two {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40% {
+    transform: translate3d(-5%, 4%, 0) scale(1.08);
+  }
+  75% {
+    transform: translate3d(4%, -3%, 0) scale(0.95);
+  }
+}
+
+@keyframes flowr-logo-breathe {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes flowr-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes flowr-star-twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes flowr-wave-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-2.5%, 1.5%, 0) rotate(1.5deg);
+  }
+}
+
+.animate-fade-up {
+  animation: flowr-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-up-1 {
+  animation: flowr-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.animate-fade-up-2 {
+  animation: flowr-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.animate-fade-up-3 {
+  animation: flowr-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.19s both;
+}
+
+.animate-fade-up-4 {
+  animation: flowr-fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
+}
+
+.animate-message-in {
+  animation: flowr-message-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-pop-in {
+  animation: flowr-pop-in 0.16s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-aurora-one {
+  animation: flowr-aurora-one 20s ease-in-out infinite;
+}
+
+.animate-aurora-two {
+  animation: flowr-aurora-two 24s ease-in-out infinite;
+}
+
+.animate-logo-breathe {
+  animation: flowr-logo-breathe 5s ease-in-out infinite;
+}
+
+.animate-wave-drift {
+  animation: flowr-wave-drift 18s ease-in-out infinite;
+}
+
+.animate-star-twinkle {
+  animation: flowr-star-twinkle 4.5s ease-in-out infinite;
+}
+
+.flowr-gradient-text {
+  background: linear-gradient(110deg, #93c5fd 0%, #818cf8 45%, #f472b6 80%, #93c5fd 100%);
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: flowr-shimmer 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

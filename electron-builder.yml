@@ -1,0 +1,27 @@
+appId: com.flowr.desktop
+productName: Flowr
+asar: false
+directories:
+  output: release
+files:
+  - dist/**/*
+  - electron/**/*
+  - public/**/*
+  - server.mjs
+  - package.json
+  - "!electron/icon.png"
+win:
+  icon: electron/icon.ico
+  target:
+    - target: portable
+      arch:
+        - x64
+    - target: nsis
+      arch:
+        - x64
+portable:
+  artifactName: Flowr-Portable.exe
+nsis:
+  artifactName: Flowr-Setup.exe
+  oneClick: true
+  perMachine: false
